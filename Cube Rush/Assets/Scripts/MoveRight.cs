@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveLeft : MonoBehaviour
+public class MoveRight : MonoBehaviour
 {
     private PlayerController _playerScript;
     public float moveSpeed = 10;
