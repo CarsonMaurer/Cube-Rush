@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Obstacle"))
         {
             isGameover = true;
+            Destroy(this.gameObject);
            // _playerAnim.SetTrigger("isHit");
           //  _playerAudio.PlayOneShot(crashSound, 1.0f);
         }
