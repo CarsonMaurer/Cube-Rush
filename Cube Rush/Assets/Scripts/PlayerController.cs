@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour
     //public AudioClip crashSound;
 
     private Rigidbody2D _playerRB;
-    //private Animator _playerAnim;
+    private Animator _playerAnim;
     //private AudioSource _playerAudio;
     // Start is called before the first frame update
     void Start()
     {
         _playerRB = GetComponent<Rigidbody2D>();
-      //  _playerAnim = GetComponent<Animator>();
+        _playerAnim = GetComponent<Animator>();
        // _playerAudio = GetComponent<AudioSource>();
     }
 
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             _playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
-           // _playerAnim.SetBool("IsOnGround", false);
+            _playerAnim.SetBool("IsOnGround", false);
           //  _playerAudio.PlayOneShot(jumpSound, 1.0f);
 
         }
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-          //  _playerAnim.SetBool("IsOnGround", true);
+            _playerAnim.SetBool("IsOnGround", true);
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
