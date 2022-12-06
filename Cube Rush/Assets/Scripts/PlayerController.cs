@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _playerRB;
     private Animator _playerAnim;
+
+    private GameManager _gameManager;
     //private AudioSource _playerAudio;
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            isGameover = true;
+            
             Destroy(this.gameObject);
            // _playerAnim.SetTrigger("isHit");
           //  _playerAudio.PlayOneShot(crashSound, 1.0f);
