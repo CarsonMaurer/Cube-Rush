@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerRB = GetComponent<Rigidbody2D>();
         _playerAnim = GetComponent<Animator>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
        // _playerAudio = GetComponent<AudioSource>();
     }
 
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !isGameover)
         {
-            _playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, jumpForce);
             isOnGround = false;
             _playerAnim.SetBool("IsOnGround", false);
           //  _playerAudio.PlayOneShot(jumpSound, 1.0f);
@@ -45,10 +46,12 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             _playerAnim.SetBool("IsOnGround", true);
         }
-        else if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle"))
         {
-            
+            _gameManager.GameOver();
             Destroy(this.gameObject);
+            
+            
            // _playerAnim.SetTrigger("isHit");
           //  _playerAudio.PlayOneShot(crashSound, 1.0f);
         }
