@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI GameOverText;
      public TextMeshProUGUI GametitleText;
     public Button Startbutton;
-    
+    public GameObject Placeholder_Hide_Start;
     public Button RestartButton;
    
 
@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Placeholder_Hide_Start.gameObject.SetActive(false);
        
 
     }
