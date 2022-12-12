@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Button Startbutton;
     public GameObject Placeholder_Hide_Start;
     public Button RestartButton;
+    public TextMeshProUGUI YouWonText;
+    public Button PlayAgainButton;
    
 
     // Start is called before the first frame update
@@ -51,6 +53,16 @@ public class GameManager : MonoBehaviour
         GameOverText.gameObject.SetActive(true);
         RestartButton.gameObject.SetActive(true);
     }
+    public void Win()
+    {
+        IsGameActive = false;
+        YouWonText.gameObject.SetActive(true);
+        PlayAgainButton.gameObject.SetActive(true);
+
+            
+            
+    }
+        
     public void RestartGame()
     {
         
