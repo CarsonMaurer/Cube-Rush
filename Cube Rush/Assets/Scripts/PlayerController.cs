@@ -9,21 +9,23 @@ public class PlayerController : MonoBehaviour
 
     public bool isGameover = false;
 
-    //public AudioClip jumpSound;
-    //public AudioClip crashSound;
+    public AudioClip jumpSound;
+
+    public GameObject PlayerFX;
+    public AudioClip crashSound;
 
     private Rigidbody2D _playerRB;
     private Animator _playerAnim;
 
     private GameManager _gameManager;
-    //private AudioSource _playerAudio;
+    private AudioSource _playerAudio;
     // Start is called before the first frame update
     void Start()
     {
         _playerRB = GetComponent<Rigidbody2D>();
-        _playerAnim = GetComponent<Animator>();
+      //  _playerAnim = GetComponent<Animator>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-       // _playerAudio = GetComponent<AudioSource>();
+        _playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,8 +35,8 @@ public class PlayerController : MonoBehaviour
         {
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, jumpForce);
             isOnGround = false;
-            _playerAnim.SetBool("IsOnGround", false);
-          //  _playerAudio.PlayOneShot(jumpSound, 1.0f);
+          //  _playerAnim.SetBool("IsOnGround", false);
+             _playerAudio.PlayOneShot(jumpSound, 1.0f);
 
         }
     }
@@ -44,16 +46,17 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-            _playerAnim.SetBool("IsOnGround", true);
+          //  _playerAnim.SetBool("IsOnGround", true);
         }
         if (other.gameObject.CompareTag("Obstacle"))
         {
             _gameManager.GameOver();
             Destroy(this.gameObject);
+            Instantiate(PlayerFX, transform.position, PlayerFX.transform.rotation);
             
             
            // _playerAnim.SetTrigger("isHit");
-          //  _playerAudio.PlayOneShot(crashSound, 1.0f);
+            _playerAudio.PlayOneShot(crashSound, 1.0f);
         }
         if (other.gameObject.CompareTag("Win"))
         {
