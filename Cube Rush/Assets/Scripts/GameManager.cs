@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject PlayerObject;
     public TextMeshProUGUI GameOverText;
-     public TextMeshProUGUI GametitleText;
+    
     public Button Startbutton;
     public GameObject Placeholder_Hide_Start;
     public Button RestartButton;
@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        GametitleText.gameObject.SetActive(false);
         Startbutton.gameObject.SetActive(false);
         PlayerObject.gameObject.SetActive(true);
 
