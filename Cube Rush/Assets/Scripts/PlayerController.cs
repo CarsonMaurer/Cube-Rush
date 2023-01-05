@@ -51,12 +51,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             _gameManager.GameOver();
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
             Instantiate(PlayerFX, transform.position, PlayerFX.transform.rotation);
             
             
            // _playerAnim.SetTrigger("isHit");
-            _playerAudio.PlayOneShot(crashSound, 1.0f);
+           // _playerAudio.PlayOneShot(crashSound, 1.0f);
         }
         if (other.gameObject.CompareTag("Win"))
         {
