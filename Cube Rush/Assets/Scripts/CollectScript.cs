@@ -7,36 +7,34 @@ using TMPro;
 public class CollectScript : MonoBehaviour
 {
     
-    public int score = 0;
+    public ScoreManager scoreManager;
 
-    
     public GameObject player;
 
-    
-    public TextMeshProUGUI scoreText;
 
     void Start()
     {
-        
+       
+        scoreManager = FindObjectOfType<ScoreManager>();
         player = GameObject.FindWithTag("Player");
 
-        
-        scoreText = player.GetComponent<TextMeshProUGUI>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        
-        if (collision.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
             
-            score++;
-
-            
-            scoreText.text = "Coins: " + score;
+            scoreManager.IncrementScore();
 
             
             Destroy(gameObject);
         }
     }
 }
+
+
+
+
+
+
