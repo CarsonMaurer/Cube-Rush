@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             
             
            // _playerAnim.SetTrigger("isHit");
-           // _playerAudio.PlayOneShot(crashSound, 1.0f);
+           _playerAudio.PlayOneShot(crashSound, 1.0f);
         }
         if (other.gameObject.CompareTag("Win"))
         {

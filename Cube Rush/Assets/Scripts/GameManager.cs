@@ -18,28 +18,36 @@ public class GameManager : MonoBehaviour
     public Button RestartButton;
     public TextMeshProUGUI YouWonText;
     public Button PlayAgainButton;
+    public Button QuitButton;
    
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         PlayerObject.gameObject.SetActive(false);
+        
+        
     }
 
     public void StartGame()
     {
         Startbutton.gameObject.SetActive(false);
         PlayerObject.gameObject.SetActive(true);
+        QuitButton.gameObject.SetActive(false);
 
         
         IsGameActive = true;
         
-        
-        
+     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
     }
-
-
+    public void LoadStartScreen()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     
    
@@ -51,13 +59,14 @@ public class GameManager : MonoBehaviour
         IsGameActive = false;
         GameOverText.gameObject.SetActive(true);
         RestartButton.gameObject.SetActive(true);
+        QuitButton.gameObject.SetActive(true);
     }
     public void Win()
     {
         IsGameActive = false;
         YouWonText.gameObject.SetActive(true);
         PlayAgainButton.gameObject.SetActive(true);
-
+        QuitButton.gameObject.SetActive(true);
             
             
     }
